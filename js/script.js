@@ -1,61 +1,26 @@
 'use strict';
-//callback function функция которая должна выполниться после того как другая завершила своё выполнение
-function first() {
-    //Do something
-    setTimeout(function () {
-        console.log(1);
-    }, 500);
-}
 
-function second() {
-    console.log(2);
+let num = 50;
+// while(num<=55){
+//     console.log(num);
+//     num++;
+// }
+do{//сделай пожалуйста что-то 
+    console.log(num);
+    num++;
 }
-first();
-second();
+while(num<55)
 
-function learnJS(lang, callback) {
-    console.log(`Я учу: ${lang}`);
-    callback();
+for(let i =1;i<8;i++){
+console.log(num);
+num++;
 }
+for(let i =1;i<10;i++){
+    if(i===6){
+// break;
+continue;//позволяет пропустить тот шаг который нам не нужен но при этом не останавливает полностью цикл
+    }
+console.log(i);
 
-function done() {
-    console.log('Я прошел этот урок!');
 }
-learnJS('JavaScript', done);
-// learnJS('JavaScript', function(){
-//     console.log('Я выполнил урок');
-// });
-
-
-const num = 50;
-switch (num) {
-    case 49:
-        console.log("Не верно");
-        break;
-    case 40:
-        console.log('No');
-        break;
-    case 50:
-        console.log('wow-yes');
-        break;
-    default:
-        console.log("Не в этот раз");
-        break;
-}
-
-const str = '50';
-switch (str) {
-    case '49':
-        console.log("Не верно");
-        break;
-    case '40':
-        console.log('No');
-        break;
-    case '50':
-        console.log('wow-yes');
-        break;
-    default:
-        console.log("Не в этот раз");
-        break;
-}
-//lesson 13+
+//lesson14 циклы
