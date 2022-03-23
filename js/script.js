@@ -1,33 +1,33 @@
 "use strict";
-let num = 20; //глобальная переменная
+// lesson 17методы и свойства строк и чисел
+const str="test";
+const arr=[1,2,5];
+console.log(str.length);
+console.log(arr.length);
+// методы это вспомогательные свойства и они вызываются метод() а свойства нет .length
+console.dir(Number); //выводит какой-то элемент ввиде обьекта
+console.log(str[2]);
+console.log(str.toUpperCase());//возвращает новое значение, не изменяет предыдущую запись
 
-function showFirstMessage(text) {
-    console.log(text);
-    let num = 33; //локальная фун-ия сущ только внутри функции, внутри фигурных стрелок
-    num = 10; //перезаписываем глобальную переменную
+
+const fruit="Some fruit";//поиск подстроки тоесть узнать с какого индекса(какой символ по счету начало) начинается
+console.log(fruit.indexOf("fruit"));//зачастую используется чтобы узнать есть ли в строке искомое значение
+console.log(fruit.indexOf("q"));//получим -1 значит что отсутствует
+
+const logg="Hello world";
+console.log(logg.slice(6,logg.length));// =console.log(logg.slice(6))
+console.log(logg.slice(6));//поддерживается отрицательное начало -5 справа налево строки
 
 
+console.log(logg.substring(6,11));//можно задавать первый аргумент больше чем второй и не поддерживает отрицательные значения =такойже как и метод slice
 
-    console.log(num);
-}
-showFirstMessage("Hello world!");
-console.log(num);
 
-function calc(a, b) {
-    return (a + b)
-}
-console.log(calc(5, 6));
-console.log(calc(10, 7));
+console.log(logg.substr(6,5)); //вторым значением указываем сколько символов хотим вырезать после тго как начали
 
-function ret() {
-    let num = 77;
-    return num;
-} //так возвращается из функции при помощи return переменная или какие-то еще значения
-const anotherNum = ret();
-console.log(anotherNum);
-const logger = function () {
-    console.log("Hello");
-};
-logger();
 
-const calc = (a, b) =>{return a + b};
+//числа
+const num = 12.2;
+console.log(Math.round(num));//округление к ближ целому
+const test ="12.2px";
+console.log(parseInt(test));//перевести в число, а вообще этот метод переводит в другую систему исчислений
+console.log(parseFloat(test));// взять строку или число и вернуть в десятичном варианте возвращает с плавающей точкойй
