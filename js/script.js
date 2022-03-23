@@ -46,3 +46,8 @@ if (personalMovieDB.count < 10) {
 }
 
 console.log(personalMovieDB);
+//lesson15
+
+&& -and
+||- or
+!= -not
