@@ -1,33 +1,81 @@
-"use strict";
-// lesson 17методы и свойства строк и чисел
-const str="test";
-const arr=[1,2,5];
-console.log(str.length);
-console.log(arr.length);
-// методы это вспомогательные свойства и они вызываются метод() а свойства нет .length
-console.dir(Number); //выводит какой-то элемент ввиде обьекта
-console.log(str[2]);
-console.log(str.toUpperCase());//возвращает новое значение, не изменяет предыдущую запись
+// lesson 18используем функции
+/* Задание на урок:
+1) Первую часть задания повторить по уроку
+2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
+false - выводит в консоль главный объект программы
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres
+P.S. Функции вызывать не обязательно */
+
+'use strict';
+
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        // цикл будет выполняться пока одно из уловий правдивое
+        // isNaN -is not a number если введено не число
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }// цикл вайл-пока у нас что-то происходит мы будем выполнять действия
+}
+
+start();
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
 
 
-const fruit="Some fruit";//поиск подстроки тоесть узнать с какого индекса(какой символ по счету начало) начинается
-console.log(fruit.indexOf("fruit"));//зачастую используется чтобы узнать есть ли в строке искомое значение
-console.log(fruit.indexOf("q"));//получим -1 значит что отсутствует
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+              b = prompt('На сколько оцените его?', '');
+    
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+    }
+}
 
-const logg="Hello world";
-console.log(logg.slice(6,logg.length));// =console.log(logg.slice(6))
-console.log(logg.slice(6));//поддерживается отрицательное начало -5 справа налево строки
+rememberMyFilms();
 
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log("Просмотрено довольно мало фильмов");
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+        console.log("Вы классический зритель");
+    } else if (personalMovieDB.count >= 30) {
+        console.log("Вы киноман");
+    } else {
+        console.log("Произошла ошибка");
+    }
+}
 
-console.log(logg.substring(6,11));//можно задавать первый аргумент больше чем второй и не поддерживает отрицательные значения =такойже как и метод slice
+detectPersonalLevel();
 
+function showMyDB (hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
 
-console.log(logg.substr(6,5)); //вторым значением указываем сколько символов хотим вырезать после тго как начали
+showMyDB(personalMovieDB.privat);
 
+function writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+    }
+}
 
-//числа
-const num = 12.2;
-console.log(Math.round(num));//округление к ближ целому
-const test ="12.2px";
-console.log(parseInt(test));//перевести в число, а вообще этот метод переводит в другую систему исчислений
-console.log(parseFloat(test));// взять строку или число и вернуть в десятичном варианте возвращает с плавающей точкойй
+writeYourGenres();
