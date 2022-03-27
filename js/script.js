@@ -1,57 +1,33 @@
 "use strict"
-// lesson20 Объекты, деструктуризация obj
-const options = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-        border: 'black',
-        bg: 'red'
-    },
-    makeTest: function () {
-        console.log("Test");
-    }
-};
-options.makeTest();
+// lesson21 Массивы и псевдомассивы
+const arr = [1, 2, 5, 7, 9];
+arr.sort(compareNum); //алгоритм sort внутри себя использует алгоритм быстрой сортировки
+console.log(arr);
 
-// деструктуризация объекта:
-const {
-    border,
-    bg
-} = options.colors;
-console.log(border, bg);
-
-console.log(Object.keys(options).length);
-console.log(options.colors.bg);
-console.log(options['colors']['border']);
-
-delete options.name; //удалить
-
-for (let key in options) { //перебираем обьект key-просто переменная и этот цикл будет работать столько раз сколько свойств в объекте
-    if (typeof (options[key]) === 'object') {
-        for (let i in options[key]) {
-            console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
-        }
-    } else {
-
-        console.log(`Свойство ${key} имеет значение ${options[key]}`);
-    }
+function compareNum(a, b) {
+    return a - b;
 }
-// у объекта нет св-ва length но узнать кол-во можно:
-// console.log(Object.keys(options).length);
-let counter = 0;
-for (let key in options) { //перебираем обьект key-просто переменная и этот цикл будет работать столько раз сколько свойств в объекте
-    // if (typeof (options[key]) === 'object') {
-    //     for (let i in options[key]) {
-    //         console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
-    counter++;
-    //     }
-    // } else {
 
-    //     console.log(`Свойство ${key} имеет значение ${options[key]}`);
-    //     counter++;
-    // }
+
+// arr[99]=0;
+// console.log(arr.length);
+// console.log(arr);
+arr.forEach(function (item, index, arr) {
+    console.log(`${index}: ${item} внутри массива ${arr}`);
+
+}); //метод перебора массивов
+arr.pop(); //удаляет посл элемент из массива
+arr.push(10); //добавляет посл элемент из массива
+console.log(arr);
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
 }
-console.log(counter);
 
-// JS это объектно-ориентированный язык и все сущности которые в нём есть сводятся к объектам=прототипно-ориентированный язык
+for (let value of arr) {
+    console.log(value);
+}
+const str = prompt("", "");
+const products = str.split(", "); // вывод массива без ,_
+// console.log(products);
+products.sort(); // метод сортировки всегда как строки
+console.log(products.join("; ")); //метод обьеденения элементов в массиве
