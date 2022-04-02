@@ -1,101 +1,51 @@
 "use strict"
-// lesson24 Используем объекты практика
-/* Задание на урок:
-
-1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
-перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
-Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
-
-2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
-переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
-
-3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
-Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
-при помощи метода forEach вывести в консоль сообщения в таком виде:
-"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
-
-// Код возьмите из предыдущего домашнего задания
+// lesson26 Динамическая типизация в JS 
+// 1)
+console.log(typeof (String(null)));
+console.log(typeof (String(4)));
+console.log(String(null));
 
 
+// 2)
+console.log(typeof (5 + '')); //конкатенация это сложение строки с чем-то, при сложении со строкой всегда получается строка
 
 
+const num = 5;
+console.log("https://maybe.com/catalog" + num);
 
-const personalMovieDB = {
-    count: 0,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false,
-    start: () => {
-        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            // цикл будет выполняться пока одно из условий правдивое
-            // isNaN -is not a number если введено не число
-            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
-        } // цикл вайл-пока у нас что-то происходит мы будем выполнять действия
-    },
-    rememberMyFilms: function () {
-        for (let i = 0; i < 2; i++) {
-            const a = prompt('Один из последних просмотренных фильмов?', ''),
-                b = prompt('На сколько оцените его?', '');
+const fontsize = 26 + 'px';
+// To number
+// 1) 
+console.log(typeof (Number('4')));
+// 2)
+console.log(typeof (+'34'));
 
-            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-                personalMovieDB.movies[a] = b;
-                console.log('done');
-            } else {
-                console.log('error');
-                i--;
-            }
-        }
-    },
-    detectPersonalLevel: function () {
-        if (personalMovieDB.count < 10) {
-            console.log("Просмотрено довольно мало фильмов");
-        } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-            console.log("Вы классический зритель");
-        } else if (personalMovieDB.count >= 30) {
-            console.log("Вы киноман");
-        } else {
-            console.log("Произошла ошибка");
-        }
-    },
-    showMyDB: function (hidden) {
-        if (!hidden) {
-            console.log(personalMovieDB);
-        }
-    },
-    toggleVisibleMyDB: function () {
-        if (personalMovieDB.privat) {
-            personalMovieDB.privat = false;
-        } else {
-            personalMovieDB.privat = true;
-        }
-    },
-    writeYourGenres: function () {
-        // for (let i = 1; i <= 3; i++) {
-        for (let i = 1; i <= 2; i++) {
-            // let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+// 3)
+console.log(typeof (parseInt("15px", 10)));
 
-            // if (genre === '' || genre == null) {
-            //     console.log("Вы ввели некорректные данные или не ввели их вообще!");
-            //     i--;
-            // } else {
-            //     personalMovieDB.genres[i - 1] = genre;
-            // }
+let answ = +prompt("Hello", '');
 
-            let genre = prompt('Введите ваши любимые жанры через запятую').toLowerCase();//toLowerCase() для того чтоб отсортировать правльно через метод sort() -нижний регистр
+// Всё что мы получаем от пользователя приходит строкой
 
-             if (genre === '' || genre == null) {
-                    console.log("Вы ввели некорректные данные или не ввели их вообще!");
-                    i--;
-                } else {
-                    personalMovieDB.genres = genre.split(", ");
-                    personalMovieDB.genres.sort();
-                }
-        }
-        personalMovieDB.genres.forEach((item, i) => {
-            console.log(`Любимый жанр  ${++i} - это ${item}`);
-        });
-    }
-};
+
+// To boolean
+
+// 0, '', null, undefined, NaN;      -//всегда false, а всё остальное true
+// 1)способ логичечких преобразований
+let swither = null;
+if (swither) {
+    console.log("Working...");
+}
+swither = 1;
+if (swither) {
+    console.log("Working...");
+}
+
+
+// 2)способ логических преобразований
+console.log(typeof (Boolean('4')));
+
+
+// 3)способ логических преобразований
+console.log(typeof (!!"4444"));
