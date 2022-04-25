@@ -1,43 +1,46 @@
-// 23 цикл в цикле и метки
-for (let i = 0; i < 3; i++) {
-    console.log("первый цикл-обертка");
-    for (let j = 0; j < 3; j++) {
-        console.log("первый вложенный цикл");
-    }
-};
+// 21 логические операторы
+// const hamburger = true;// 5
+// const fries = true;//null, 0
+// if(hamburger && fries){
+//     console.log("Я сыт!");
+// }
+// console.log((hamburger && fries));
+//результат логических операций это всегда какоето булевое значение true или false
 
 
-// *
-// **
-// ***
-// ****
-// *****
-// ******
 
-let result = '';
-const length = 7;
-for (let i = 1; i < length; i++) {
-    for (let j = 0; j < i; j++) {
-        result += '*';
-    }
-    result += '\n'; // \n -перенос строки в коде
+// const hamburger = 3; 
+// const fries = 1;
+// const cola =0;
+console.log((hamburger === 3 && cola && fries)); //оператор && возвращает первое значение на котором он остановился, а если все правильно то возвратит тот на котором остановился
+
+if(hamburger === 3 && cola === 1 && fries === 1){
+    console.log("Все довольны!");
+}
+else{
+    console.log("Мы уходим!");
+
 }
 
-console.log(result);
+console.log(1 && 0);
+console.log(1 && 5);
+console.log(null && 5);
+console.log(0 && 'efefefesgwrf');
 
 
 
+const hamburger = 3; 
+const fries = 3;
+const cola = 0;
+const nuggets = 2;
 
-first: for (let i = 0; i < 5; i++) {
-    console.log(`First level: ${i}`);
-    for (let j = 0; j < 5; j++) {
-        console.log(`Second level: ${j}`);
-        for (let k = 0; k < 3; k++) {
-            if(k === 2){
-                // break first;
-                continue first; // first это метка к которой переходит цикл к выполнению после условия
-            }
-            console.log(`Third level: ${k}`);
-        }
-    }
+if(hamburger === 3 && cola === 2 || fries === 3 && nuggets){
+    console.log("Все сыты!");
+}
+else{
+    console.log("Мы уходим!");
+
 };
+
+let johnReport, alexReport, samReport, mariaReport = 'done';
+console.log(johnReport || alexReport || samReport || mariaReport);
