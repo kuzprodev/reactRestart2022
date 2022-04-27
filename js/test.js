@@ -1,124 +1,68 @@
 // Место для первой задачи
-function firstTask() {
-    for (let i = 5; i <= 10; i++) {
-        console.log(i);
-    }
-};
-firstTask();
+function sayHello(name) {
+    return `Привет, ${name}`;
+}
+
 // Место для второй задачи
-function secondTask() {
-    for (let i = 20; i >= 10; i--) {
-        if (i === 13) break;
-        console.log(i);
-    }
-};
-secondTask();
+function returnNeighboringNumbers(num) {
+    return [--num, num, ++num]
+}
 
 // Место для третьей задачи
-function thirdTask() {
-    for (let i = 2; i <= 10; i++) {
-        if (i % 2 == 0) {
-            console.log(i);
-        }
+function getMathResult(numOne, numTwo) {
+    if (typeof (numTwo) !== 'number' || numTwo <= 0) {
+        return numOne;
     }
-};
-thirdTask();
 
-// Место для четвертой задачи
+    let str = '';
 
-// Цикл, который нужно переписать:
-
-// for (let i = 2; i <= 16; i++) {
-//     if (i % 2 === 0) {
-//         continue;
-//     } else {
-//         console.log(i);
-//     }
-// }
-
-function fourthTask() {
-    let i = 2;
-    while (i <= 16) {
-        if (i % 2 === 0) {
-            i++;
-            continue;
+    for (let i = 1; i <= numTwo; i++) {
+        if (i === numTwo) {
+            str += `${numOne * i}`;
+            // Тут без черточек в конце
         } else {
-            console.log(i);
-        }
-        i++;
-    }
-};
-fourthTask();
-
-// Место для пятой задачи
-
-function fifthTask() {
-    const arrayOfNumbers = [];
-
-    for (let i = 5; i <= 10; i++) {        
-            arrayOfNumbers[i-5] = i;
-        }
-        console.log(arrayOfNumbers);      
-    // Не трогаем
-    return arrayOfNumbers;
-};
-fifthTask();
-
-
-
-
-
-// Место для первой задачи
-function firstTask() {
-    // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
-    const arr = [3, 5, 8, 16, 20, 23, 50];
-    const result = [];
-    for(let i = 0; i<arr.length; i++){
-        result.push(arr[i]);
-            }
-console.log(result);   
-    return result;
-}
-
-// Место для второй задачи
-function secondTask() {
-    const data = [5, 10, 'Shopping', 20, 'Homework'];
-
-    for (let i = 0; i < data.length; i++) {
-        if (typeof(data[i]) === 'number') {
-            data[i] = data[i] * 2;
-        } else if (typeof(data[i]) === 'string') {
-            data[i] = `${data[i]} - done`;
+            str += `${numOne * i}---`;
+            // Это тоже самое, что и
+            // str = str + numOne * i + "---"
         }
     }
 
-    console.log(data);
-    return data;
+    return str;
+}
+//упражнение по написанию кода 6: задание на работу с функциями
+
+///упражнение по написанию кода 7:(*) продвинутые задания на использование функций
+function calculateVolumeAndArea(length) {
+    if (typeof(length) !== 'number' || length < 0 || !Number.isInteger(length)) {
+        return "При вычислении произошла ошибка";
+    }
+
+    let volume = 0,
+        area = 0;
+    
+    volume = length * length * length;
+    // length ** 3 - это тоже самое, что и выше или варианты через цикл.
+    // ** - это оператор степени, напоминаю. Но онлайн редактор его не принимает =/
+    area = 6 * (length * length);
+
+    return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
 }
 
-// Место для третьей задачи
-function thirdTask() {
-    const data = [5, 10, 'Shopping', 20, 'Homework'];
-    const result = [];
+calculateVolumeAndArea(5);
 
-    for (let i = 1; i <= data.length; i++) {
-        result[i - 1] = data[data.length - i]
+function getCoupeNumber(seatNumber) {
+    if (typeof(seatNumber) !== 'number' || seatNumber < 0 || !Number.isInteger(seatNumber)) {
+        return "Ошибка. Проверьте правильность введенного номера места";
     }
-    console.log(result);
-    return result;
+
+    if (seatNumber === 0 || seatNumber > 36) {
+        return "Таких мест в вагоне не существует";
+    }
+
+    for (let i = 4; i <= 36; i = i + 4) {
+        if (seatNumber <= i) {
+            return Math.ceil(i / 4);
+        }
+    }
+    // тут очень много вариантов решения, но выбрал один из элегантных :)
 }
-
-const lines = 5;
-let result = '';
-
-for (let i = 0; i <= lines; i++) {
-    for (let j = 0; j < lines - i; j++) {
-        result += ' ';
-    }
-    for (let j = 0; j < 2 * i + 1; j++) {
-        result += '*';
-    }
-    result += '\n';
-}
-
-console.log(result)
