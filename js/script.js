@@ -37,11 +37,30 @@ div.classList.add('black');
 // document.querySelector('.wrapper').append(div);
 wrapper.append(div);  //вставляет в конец блока
 wrapper.prepend(div);  //вставляет в начало блока
+wrapper.appendChild(div);
 
 
 hearts[1].before(div);  // перед блоком
 hearts[1].after(div);   //после блока
 
 
+wrapper.insertBefore(div, hearts[0]);//старый метод  //первый аргумент-что вставляем, второй аргумент -перед каким элементом вставляем
+
 
 circles[0].remove();  // метод удаление элемента
+wrapper.removeChild(hearts[1]);//старый метод
+
+hearts[0].replaceWith(circles[0]);  //метод заменить один элемент другим
+// wrapper.replaceChild(circles[1], hearts[0]);  //старый метод 1-на который поменять,2-тот который меняется
+
+
+
+div.innerHTML='<h1>Hello World</h1>';
+
+// div.textContent = 'Hello'; //только с текстом
+
+
+div.insertAdjacentHTML('beforebegin', '<h2>Hello</h2>'); //перед элементом
+div.insertAdjacentHTML('afterbegin', '<h2>Hello</h2>'); // первым внутрь элемента
+div.insertAdjacentHTML('beforeend', '<h2>Hello</h2>'); // последним внутрь элемента
+div.insertAdjacentHTML('afterend', '<h2>Hello</h2>'); // после элемента
