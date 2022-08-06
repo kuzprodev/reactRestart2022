@@ -1,52 +1,30 @@
-// lesson 45. События и их обработчики
+// lesson 46. Навигация по DOM - элементам, data-атрибуты, преимущество for/of
 'use strict';
+// console.log(document.head);
+// console.log(document.documentElement); //получение html тега
 
-const btn = document.querySelector('button'),
-overlay = document.querySelector('.overlay'),
-btns =document.querySelectorAll('button');
+// дом элементы и дом узлы эторазное- всё что в тегах это элементы, а то что не видите
+// будет узлом(переносы строк, текстовые элементы
+// console.log(document.body.firstChild); console.log(document.body.firstElementChild);
+// console.log(document.body.lastChild);
+
+console.log(document.querySelector('#current').parentNode);
+console.log(document.querySelector('#current').parentNode.parentNode);
+console.log(document.querySelector('[data-current="3"]').nextSibling);
+console.log(document.querySelector('[data-current="3"]').previousSibling);
+//это ысе о узлах, а теперь по элементам
+
+console.log(document.querySelector('[data-current="3"]').nextElementSibling);
+console.log(document.querySelector('[data-current="3"]').previousElementSibling);
+console.log(document.querySelector('#current').parentElement);
 
 
-// btn.onclick = function () { //але так вже не робиться застаріла версія- може спрацювати тільки
-//     // один раз-останній+неможливо видалити подію
-//     alert('Click');
-// };
-// btn.onclick = function () { //але так вже не робиться застаріла версія- може спрацювати тільки
-//     // один раз-останній+неможливо видалити подію
-//     alert('Second Click');
-// };
+// console.log(document.body.childNodes); //не можем использовать forEach
 
-// btn.addEventListener('click', () => {
-//     alert('new click');
-// });
-// btn.addEventListener('click', () => {
-//     alert('new second click');
-// });
-// btn.addEventListener('mouseenter', (e) => {
-//     console.log(e);
-//     console.log(e.target);
-//     // e.target.remove();
-//     console.log('hover');
-// });
-// let i = 0;
-const deleteElement = (e) => {
-    // e.target.remove();
-    console.log(e.target);
-    console.log(e.currentTarget);
-    console.log(e.type); //тип события
-    // i++;
-    // if (i === 1) {
-    //     btn.removeEventListener('click', deleteElement); //удаление обработчика
-    // }
-};
+for(let node of document.body.childNodes){
+    if(node.nodeName === '#text'){
+        continue;
+    }
 
-// btn.addEventListener('click', deleteElement);
-overlay.addEventListener('click', deleteElement);
-
-const link =document.querySelector('a');
-link.addEventListener('click', (e)=>{
-   e.preventDefault(); //отмена стандартного поведения
-    console.log(e.target);
-});
-btns.forEach(btn=>{
-    btn.addEventListener('click', deleteElement,{once:true} ); //у события есть третья опция(аргумент)
-});
+    console.log(node);
+}
