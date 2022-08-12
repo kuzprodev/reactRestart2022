@@ -1,33 +1,24 @@
-//lesson 55. (д) Живые коллекции и полезные методы
+//lesson 56. (д) Тип данных Symbol
 
 'use strict';
 // document.addEventListener('DOMContentLoaded', () => {
-const boxesQuery = document.querySelectorAll('.box');
-const boxesGet = document.getElementsByClassName('box');
+let id = Symbol('id');
+const obj = {
+    name: 'Test',
+    // [Symbol('id')] : 1
+    [id]: 1,
+    getId: function(){
+        return this[id];
+    }
+};
+// let id = Symbol("id");
+// obj[id] = 1;
+// console.log(obj[id]);
+console.log(obj);
+// console.log(obj.getId());
+console.log(obj[Object.getOwnPropertySymbols(obj)[0]]);
+// console.log(obj[id]);
+for( let value in obj) console.log(value);
 
-boxesQuery.forEach(box =>{
-if(box.matches('.this')){
-console.log('This one!');
-}
-    // if(box.matches('.this')) console.log('This one!');
-});
-console.log(boxesQuery[0].closest('.wrapper'));
-
-boxesQuery[0].remove();
-boxesGet[0].remove();
-
-for (let i = 0; i < 5; i++) {
-    const div = document.createElement('div');
-    div.classList.add('box');
-    document.body.append(div);
-    boxesGet[boxesGet.length] = div; //будет ошибка, так как напрямую работать с штмл коллекцией нельзя,
-    // запрещено синтаксисом джаваскриптв
-}
-
-console.log(boxesQuery);
-console.log(boxesGet);
-// console.log(document.body.children);
-
-console.log(Array.from(boxesGet)); //создать массив из массивоподобного обьекта
 
 // });
