@@ -31,7 +31,7 @@ a {
 .box {
     width: 150px;
     height: 150px;
-    background-color: olive
+    background-color: black
 }
 
 /*lesson 53. (д) Оператор нулевого слияния (Nullish, ??) ES11*/
