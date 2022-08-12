@@ -1,21 +1,34 @@
-//lesson 53. (д) Оператор нулевого слияния (Nullish, ??) ES11
+//lesson 54. (д) Оператор опциональной цепочки (?.) ES11
 
 'use strict';
 // document.addEventListener('DOMContentLoaded', () => {
 
 const box = document.querySelector('.box');
-const newHeight = 100;
-const newWidth = 400;
+const block = document.querySelector('.block');
+console.log(block);
+if (block) {
+    console.log(block.textContent);
+}
+console.log(block?.textContent);
+// block?.textContent = "123";  //будет undefanet
+// block?.textContent = "123";
+console.log(1 + 2);
 
-const changeParams = (elem, h, w) => {
-    elem.style.height = `${h ?? 200}px`;
-    elem.style.width = `${w ?? 200}px`;
-    elem.innerHTML = (h ?? 100) * (w ?? 300);
+const userData = {
+    name: 'Ivan',
+    age: null,
+    say: ()=>{
+        console.log('Hello!');
+    }
 };
-changeParams(box, newHeight, newWidth);
+userData.say();
+userData.hey?.();
 
-let userName;
-let userKey;
-console.log(userName ?? userKey ?? 'User');
+if(userData && userData.skills && userData.skills.js){
+
+console.log(userData.skills.js);
+}
+console.log(userData?.skills?.js);
+
 
 // });
