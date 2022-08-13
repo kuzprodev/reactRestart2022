@@ -1,40 +1,49 @@
-//lesson 56. (д) Тип данных Symbol
+//lesson 57. (д) Дескрипторы свойств и полезные методы объектов
 
 'use strict';
 // document.addEventListener('DOMContentLoaded', () => {
-// let id = Symbol('id');
-// const obj = {
-//     name: 'Test',
-//     // [Symbol('id')] : 1
-//     [id]: 1,
-//     getId: function(){
-//         return this[id];
-//     }
-// };
-// // let id = Symbol("id");
-// // obj[id] = 1;
-// // console.log(obj[id]);
-// console.log(obj);
-// // console.log(obj.getId());
-// console.log(obj[Object.getOwnPropertySymbols(obj)[0]]);
-// // console.log(obj[id]);
-// for( let value in obj) console.log(value);
+const user = {
+    name: 'Alex', surname: 'Smith', birthday: '20/04/1993', showMyPublicData: function () {
+        console.log(`${this.name} ${this.surname}`);
+    }
 
-
-//part two
-
-const myAwesomeDB = {
-    movies: [],
-    actors: [],
-    // [Symbol('id')]: 123
-    [Symbol.for('id')]: 123
 };
-// Сторонний код библиотеки
+Object.defineProperty(user, 'birthday', {writable: false});
+Object.defineProperty(user, 'birthday', {value: prompt('Date?'), enumerable: true,configurable: true});
 
-myAwesomeDB.id = '1234342414';
+console.log(Object.getOwnPropertyDescriptor(user, 'birthday'));
 
-// console.log(myAwesomeDB['id']);
-console.log(myAwesomeDB[Symbol.for('id')]);
-console.log(myAwesomeDB);
+
+console.log(Object.getOwnPropertyDescriptor(user, 'name'));
+Object.defineProperty(user, 'name', {writable: false}); //можем читать, но не можем изменять
+// user.name = 'frw'; //можем читать, но не можем изменять
+
+Object.defineProperty(user, 'gender', {value: 'male'}); //создается новое свойство если такого названия ещё не было
+console.log(Object.getOwnPropertyDescriptor(user, 'gender'));
+
+Object.defineProperty(user, 'showMyPublicData', {enumerable: false});
+for(let key in user) console.log(key);
+
+console.log(Object.getOwnPropertyDescriptor(Math, 'PI'));
+
+
+Object.defineProperties(user, {
+    name: {writable:false},
+    surname: {writable:true}
+});
+
+
+//flags:
+//1) writable, если этот параметр будет стоять в параметре true, то св-ва в объекте можно будет изменить
+// или если false- то будет только для чтения
+//2) enumerable если в true, то св-ва будут перечисляться в циклах, если нет то циклы будут игнорить
+//3) configurable, если true, то св-ва можно удалить, а его атрибуты изменить, иначе нет
+// изначально стоят в позиции true
+
+
+
+
+
+
 
 // });
