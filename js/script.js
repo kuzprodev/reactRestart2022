@@ -47,7 +47,7 @@ const salaries = {
         console.log('Hello');
     }
 }
-salaries[Symbol.iterator] = function() {
+salaries[Symbol.iterator] = function () {
     return {
         current: this.john,
         last: this.anna,
@@ -57,14 +57,19 @@ salaries[Symbol.iterator] = function() {
                 return {done: false, value: this.current}
             } else {
                 return {done: true, value: this.current}
+
             }
 
         }
     }
 }
 
-for(let res of salaries){
-    console.log(res);
-}
+// for (let res of salaries) {
+//     console.log(res);
+// }
 
+//можно вызвать и вручную:
+const iterator = salaries[Symbol.iterator]();
+console.log(iterator.next()); //может понадобиться когда вызываем команду внутри обычного цикла, ведь мы можем останавливать циклы
+// при помощи break; или прерывать continue;
 // });
