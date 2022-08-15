@@ -1,54 +1,70 @@
-//lesson 57. (д) Дескрипторы свойств и полезные методы объектов
+//lesson 58. (*) Итерируемые конструкции
 
 'use strict';
 // document.addEventListener('DOMContentLoaded', () => {
-const birthday = Symbol('birthday');
+
 const user = {
     name: 'Alex', surname: 'Smith',
-    // birthday: '20/04/1993',
-    [birthday]:'20/04/1993' ,
+    birthday: '20/04/1993',
     showMyPublicData: function () {
         console.log(`${this.name} ${this.surname}`);
     }
 
 };
-Object.defineProperty(user, 'birthday', {writable: false});
-// Object.defineProperty(user, 'birthday', {value: prompt('Date?'), enumerable: true,configurable: true});
+for (const key in user) {
+    console.log(user[key]);
+}
+const arr = ['b', 'a', 'c'];
 
-console.log(Object.getOwnPropertyDescriptor(user, 'birthday'));
-
-
-console.log(Object.getOwnPropertyDescriptor(user, 'name'));
-Object.defineProperty(user, 'name', {writable: false}); //можем читать, но не можем изменять
-// user.name = 'frw'; //можем читать, но не можем изменять
-
-Object.defineProperty(user, 'gender', {value: 'male'}); //создается новое свойство если такого названия ещё не было
-console.log(Object.getOwnPropertyDescriptor(user, 'gender'));
-
-Object.defineProperty(user, 'showMyPublicData', {enumerable: false});
-for(let key in user) console.log(key);
-console.log(Object.getOwnPropertyDescriptor(user, birthday));
-
-console.log(Object.getOwnPropertyDescriptor(Math, 'PI'));
+for (const key in arr) {
+    console.log(arr[key]);
+}
+console.dir(arr);
+Array.prototype.someMethod = function () {
+};
 
 
-Object.defineProperties(user, {
-    name: {writable:false},
-    surname: {writable:true}
-});
+const str = 'string';
 
+for (const key in str) {
+    console.log(str[key]);
+}
+//!!!! for in перебирает свойства не по порядку!!!!!
 
-//flags:
-//1) writable, если этот параметр будет стоять в параметре true, то св-ва в объекте можно будет изменить
-// или если false- то будет только для чтения
-//2) enumerable если в true, то св-ва будут перечисляться в циклах, если нет то циклы будут игнорить
-//3) configurable, если true, то св-ва можно удалить, а его атрибуты изменить, иначе нет
-// изначально стоят в позиции true
+// for of проходится по значениям перебираемого обьекта
+const arr2 = ['b', 'a', 'c'];
 
+for (const key of arr2) {
+    console.log(key);
+}
+// for in получает ключ,  а for of  значения!!!
 
+const salaries = {
+    john: 500,
+    ivan: 1000,
+    anna: 5000,
+    sayHello: () => {
+        console.log('Hello');
+    }
+}
+salaries[Symbol.iterator] = function() {
+    return {
+        current: this.john,
+        last: this.anna,
+        next() {
+            if (this.current < this.last) {
+                this.current = this.current + 500;
+                return {done: false, value: this.current}
+            } else {
+                return {done: true, value: this.current}
+            }
 
+        }
+    }
+}
 
-
-
+for(let res of salaries){
+    console.log(res);
+}
 
 // });
