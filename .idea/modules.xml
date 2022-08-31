@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Dropbox/VerstkaFinPump/finPump-file-vscode/.idea/finPump-file-vscode.iml" filepath="$USER_HOME$/Dropbox/VerstkaFinPump/finPump-file-vscode/.idea/finPump-file-vscode.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/reactRestartU07112022.iml" filepath="$PROJECT_DIR$/.idea/reactRestartU07112022.iml" />
     </modules>
   </component>
