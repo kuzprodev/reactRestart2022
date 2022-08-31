@@ -77,6 +77,33 @@ for(let price of map.entries()){
 
         map.forEach((value, key, map) => {
             console.log(key, value);
-        })
+        });
+
+// part 2:
+// переводим обьект в формат карты
+
+const user = {
+    name: 'Alex',
+    surname: 'Smith',
+    birthday: '20/04/1991',
+    showMyPublicData: function() {
+        console.log(`${this.name} ${this.surname}`);
+    }
+};
+const userMap = new Map(Object.entries(user)); // переводим обьект в карту
+console.log(userMap);
+
+
+const newUserObj = Object.fromEntries(userMap); //переводит карту(массив с массивами) в обьект
+console.log(newUserObj);
+
+
+
+
+// отличие карт от обьектов- 1) ключи карт могут быть чем угодно(массивы, обьекты, функции, цифры и тп), а у обьектов только строки
+// 2) порядок св-в в картах всегда такой в каком мы их добавляли, у обьектов нет четкого порядка и зависимости когда было добавленно
+// 3)при создании пустой карты в ней нечего не будет содержаться никаких наследуемых св-в через прототип, а в пустом обьекте будут
+// 4) карты легко перебирать 
+// 5) размер карты легко получить через map.size -св-во 
 
 // });
