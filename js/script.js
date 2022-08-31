@@ -1,45 +1,24 @@
- //lesson 60. (*) Set
- // это особый вид коллекций где каждое значение может повторяться только один раз- массив где каждое значение встречается только однажды
+ //lesson 61. (*) BigInt
  'use strict';
  // document.addEventListener('DOMContentLoaded', () => {
- // const arr = [1, 1, 1, 2, 2, 4, 5, 6, 5];const set =  new Set(arr);
-
- const arr = ['Alex', 'Nina', 'Stepan', 'Petro', 'Ann', 'Alex'];
-
-// функция помощник, которая фильтрует любой массив
-function unique(arr){
-    return Array.from(new Set(arr)); //возвращаем, создаем массив из чего-то, происходит быстрая фильтрация
-}
-console.log(unique(arr));
+console.log(Number.MAX_SAFE_INTEGER);   //максимально доступное число с которым js может работать, если нужны числа больше то BigInt
 
 
-//  const set = new Set(arr);
+// const bigint = 1313442439509509539539035905309359035309353n; //перевести в bigInt в конце n
+// console.log(typeof(bigint)); //нельзя смешивать с обычными числами и использовать math
 
-//  //  методы Set:
-//  set.add('Ivan')
-//      .add('Sergo')
-//      .add('Nina');
-//  // set.delete(value);
-//  // set.has(value);
-//  // set.clear();
-//  // set.size;
+const someBigInt = BigInt(1313442439509509539539035905309359035309353);  //и эта команда может принимать строки и конвертить в число
+
+// console.log(5n + 6);
+// console.log(Math.round(5n));
 
 
-//  // for(let value of set){
-//  //     console.log(value);
-//  // }
-//  set.forEach((value, valueAgaing, set) => {
-//      console.log(value, valueAgaing); // значение и значение опять 
-//  })
+console.log(1n + 3n);
 
 
-//  console.log(set); //значения без повторений! только уникальные значения. особенность Set -набора данных
-
-
-//  console.log(set.values());
-//  set.keys(); //существует для обратной совместимости с map
-//  set.entries(); //существует для обратной совместимости с map
-
-
+let bigint = 1n;
+let number = 2;
+ console.log(bigint + BigInt(number));
+ console.log(Number(bigint) + number);
 
  // });
