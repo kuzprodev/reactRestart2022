@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 #additionally file
-# .gitignore
+.gitignore
 .jshintrc
