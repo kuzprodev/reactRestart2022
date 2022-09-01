@@ -1,24 +1,37 @@
- //lesson 61. (*) BigInt
- 'use strict';
- // document.addEventListener('DOMContentLoaded', () => {
-console.log(Number.MAX_SAFE_INTEGER);   //максимально доступное число с которым js может работать, если нужны числа больше то BigInt
+//lesson 63. ClassList и делегирование событий
+'use strict';
+// document.addEventListener('DOMContentLoaded', () => {
+const btns = document.querySelectorAll('button');
+// console.log(btns[0].classList.length);
+// console.log(btns[0].classList.item(0)); //получение класса по индексу
+// btns[0].classList.add('red', 'second', 'thr');
+// // btns[0].classList.remove('blue');
+// btns[0].classList.toggle('blue');
+// console.log(btns[1].classList.add('red'));
 
 
-// const bigint = 1313442439509509539539035905309359035309353n; //перевести в bigInt в конце n
-// console.log(typeof(bigint)); //нельзя смешивать с обычными числами и использовать math
+// contains -позволяет проверять есть ли класс и возвращает булиновое значение
+// if (btns[1].classList.contains('red')) {
+//     console.log('red');
+// }
+btns[0].addEventListener('click', () => {
+    // if (!btns[1].classList.contains('red')) {
+    //     btns[1].classList.add('red');
+    // } else {
+    //     btns[1].classList.remove('red');
+    // }
+    btns[1].classList.toggle('red');
+});
 
-const someBigInt = BigInt(1313442439509509539539035905309359035309353);  //и эта команда может принимать строки и конвертить в число
-
-// console.log(5n + 6);
-// console.log(Math.round(5n));
-
-
-console.log(1n + 3n);
+// className не стоит использовать вообще
+console.log(btns[0].className);
+// part 2 -делегирование событий
 
 
-let bigint = 1n;
-let number = 2;
- console.log(bigint + BigInt(number));
- console.log(Number(bigint) + number);
 
- // });
+
+
+
+
+
+// });
