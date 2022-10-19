@@ -60,8 +60,6 @@ window.addEventListener('DOMContentLoaded', () => {
         seconds = Math.floor((t / 1000) % 60);
     }
 
-
-
     return {
       'total': t,
       'days': days,
@@ -77,7 +75,6 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
       return num
     }
-
   }
 
   function setClock(selector, endtime) {
@@ -102,10 +99,7 @@ window.addEventListener('DOMContentLoaded', () => {
         clearInterval(timeInterval);
       }
     }
-
   }
-
-
   setClock('.timer', deadline);
   //Timer stop
 });
